@@ -5,6 +5,7 @@ import { Progress } from '../components/ui/progress';
 import { Badge } from '../components/ui/badge';
 import ClickSpark from '../components/ClickSpark';
 import DecryptedText from '../components/DecryptedText';
+import CodingProfiles from '../components/CodingProfiles';
 import { mockData } from '../mock';
 
 const Skills = () => {
