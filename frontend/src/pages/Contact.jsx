@@ -367,23 +367,68 @@ const Contact = () => {
             </ClickSpark>
           </motion.div>
 
-          {/* Contact Form */}
-          <motion.div variants={itemVariants}>
-            <ClickSpark sparkColor='#14b8a6' sparkSize={8} sparkRadius={15} sparkCount={6}>
-              <motion.div
-                variants={cardVariants}
-                whileHover="hover"
-              >
-                <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-300">
-                  <CardHeader>
-                    <CardTitle className="text-white">Send me a message</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      <div className="grid md:grid-cols-2 gap-4">
+          {/* Contact Form - Right Column */}
+          <div>
+            <motion.div variants={itemVariants}>
+              <ClickSpark sparkColor='#14b8a6' sparkSize={8} sparkRadius={15} sparkCount={6}>
+                <motion.div
+                  variants={cardVariants}
+                  whileHover="hover"
+                >
+                  <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-300">
+                    <CardHeader>
+                      <CardTitle className="text-white">Send me a message</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <form onSubmit={handleSubmit} className="space-y-4">
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="name" className="text-gray-300">
+                              Your Name
+                            </Label>
+                            <motion.div
+                              variants={formFieldVariants}
+                              whileFocus="focus"
+                              initial="blur"
+                            >
+                              <Input
+                                id="name"
+                                name="name"
+                                type="text"
+                                placeholder="John Doe"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                required
+                                className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-teal-400 transition-colors duration-200"
+                              />
+                            </motion.div>
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="email" className="text-gray-300">
+                              Email Address
+                            </Label>
+                            <motion.div
+                              variants={formFieldVariants}
+                              whileFocus="focus"
+                              initial="blur"
+                            >
+                              <Input
+                                id="email"
+                                name="email"
+                                type="email"
+                                placeholder="john@example.com"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                required
+                                className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-teal-400 transition-colors duration-200"
+                              />
+                            </motion.div>
+                          </div>
+                        </div>
+                        
                         <div className="space-y-2">
-                          <Label htmlFor="name" className="text-gray-300">
-                            Your Name
+                          <Label htmlFor="subject" className="text-gray-300">
+                            Subject
                           </Label>
                           <motion.div
                             variants={formFieldVariants}
@@ -391,119 +436,76 @@ const Contact = () => {
                             initial="blur"
                           >
                             <Input
-                              id="name"
-                              name="name"
+                              id="subject"
+                              name="subject"
                               type="text"
-                              placeholder="John Doe"
-                              value={formData.name}
+                              placeholder="Let's discuss..."
+                              value={formData.subject}
                               onChange={handleInputChange}
                               required
                               className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-teal-400 transition-colors duration-200"
                             />
                           </motion.div>
                         </div>
+                        
                         <div className="space-y-2">
-                          <Label htmlFor="email" className="text-gray-300">
-                            Email Address
+                          <Label htmlFor="message" className="text-gray-300">
+                            Message
                           </Label>
                           <motion.div
                             variants={formFieldVariants}
                             whileFocus="focus"
                             initial="blur"
                           >
-                            <Input
-                              id="email"
-                              name="email"
-                              type="email"
-                              placeholder="john@example.com"
-                              value={formData.email}
+                            <Textarea
+                              id="message"
+                              name="message"
+                              rows={5}
+                              placeholder="Tell me about your project idea or opportunity..."
+                              value={formData.message}
                               onChange={handleInputChange}
                               required
-                              className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-teal-400 transition-colors duration-200"
+                              className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-teal-400 resize-none transition-colors duration-200"
                             />
                           </motion.div>
                         </div>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="subject" className="text-gray-300">
-                          Subject
-                        </Label>
+                        
                         <motion.div
-                          variants={formFieldVariants}
-                          whileFocus="focus"
-                          initial="blur"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                         >
-                          <Input
-                            id="subject"
-                            name="subject"
-                            type="text"
-                            placeholder="Let's discuss..."
-                            value={formData.subject}
-                            onChange={handleInputChange}
-                            required
-                            className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-teal-400 transition-colors duration-200"
-                          />
+                          <Button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="w-full bg-teal-600 hover:bg-teal-700 text-white disabled:opacity-50 transition-all duration-200"
+                          >
+                            {isSubmitting ? (
+                              <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                              >
+                                Sending...
+                              </motion.div>
+                            ) : (
+                              <motion.div
+                                className="flex items-center justify-center"
+                                whileHover={{ x: 5 }}
+                                transition={{ type: "spring", stiffness: 300 }}
+                              >
+                                <Send className="h-4 w-4 mr-2" />
+                                Send Message
+                              </motion.div>
+                            )}
+                          </Button>
                         </motion.div>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="message" className="text-gray-300">
-                          Message
-                        </Label>
-                        <motion.div
-                          variants={formFieldVariants}
-                          whileFocus="focus"
-                          initial="blur"
-                        >
-                          <Textarea
-                            id="message"
-                            name="message"
-                            rows={5}
-                            placeholder="Tell me about your project idea or opportunity..."
-                            value={formData.message}
-                            onChange={handleInputChange}
-                            required
-                            className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-teal-400 resize-none transition-colors duration-200"
-                          />
-                        </motion.div>
-                      </div>
-                      
-                      <motion.div
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <Button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="w-full bg-teal-600 hover:bg-teal-700 text-white disabled:opacity-50 transition-all duration-200"
-                        >
-                          {isSubmitting ? (
-                            <motion.div
-                              animate={{ rotate: 360 }}
-                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                            >
-                              Sending...
-                            </motion.div>
-                          ) : (
-                            <motion.div
-                              className="flex items-center justify-center"
-                              whileHover={{ x: 5 }}
-                              transition={{ type: "spring", stiffness: 300 }}
-                            >
-                              <Send className="h-4 w-4 mr-2" />
-                              Send Message
-                            </motion.div>
-                          )}
-                        </Button>
-                      </motion.div>
-                    </form>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </ClickSpark>
-          </motion.div>
-        </motion.div>
+                      </form>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </ClickSpark>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
