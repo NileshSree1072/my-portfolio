@@ -6,6 +6,7 @@ import { Badge } from '../components/ui/badge';
 import ClickSpark from '../components/ClickSpark';
 import DecryptedText from '../components/DecryptedText';
 import CodingProfiles from '../components/CodingProfiles';
+import LetterGlitch from '../components/LetterGlitch';
 import { mockData } from '../mock';
 
 const Skills = () => {
