@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ClickSpark from '../components/ClickSpark';
+import DecryptedText from '../components/DecryptedText';
 import { mockData } from '../mock';
 
 const Projects = () => {
@@ -23,10 +24,22 @@ const Projects = () => {
       <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-300 transform hover:scale-105 cursor-pointer h-full">
         <CardHeader>
           <CardTitle className="text-white text-lg flex items-center justify-between">
-            {project.name}
+            <DecryptedText 
+              text={project.name}
+              speed={50}
+              maxIterations={8}
+              className="text-white"
+              encryptedClassName="text-gray-400"
+            />
             <div className="flex items-center text-sm text-gray-400">
               <Calendar className="h-4 w-4 mr-1" />
-              {project.year}
+              <DecryptedText 
+                text={project.year}
+                speed={60}
+                maxIterations={8}
+                className="text-gray-400"
+                encryptedClassName="text-gray-600"
+              />
             </div>
           </CardTitle>
         </CardHeader>
@@ -42,12 +55,24 @@ const Projects = () => {
                 variant="secondary"
                 className="bg-gray-700 text-gray-300 text-xs hover:bg-teal-600 hover:text-white transition-colors duration-200"
               >
-                {tech}
+                <DecryptedText 
+                  text={tech}
+                  speed={40}
+                  maxIterations={6}
+                  className="text-gray-300"
+                  encryptedClassName="text-gray-500"
+                />
               </Badge>
             ))}
             {project.techStack.length > 3 && (
               <Badge variant="secondary" className="bg-gray-700 text-gray-300 text-xs">
-                +{project.techStack.length - 3} more
+                <DecryptedText 
+                  text={`+${project.techStack.length - 3} more`}
+                  speed={50}
+                  maxIterations={6}
+                  className="text-gray-300"
+                  encryptedClassName="text-gray-500"
+                />
               </Badge>
             )}
           </div>
@@ -61,7 +86,13 @@ const Projects = () => {
             >
               <a href={project.github} target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4 mr-2" />
-                Code
+                <DecryptedText 
+                  text="Code"
+                  speed={60}
+                  maxIterations={6}
+                  className="text-teal-400"
+                  encryptedClassName="text-gray-500"
+                />
               </a>
             </Button>
             <Button
@@ -72,7 +103,13 @@ const Projects = () => {
             >
               <a href={project.demo} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="h-4 w-4 mr-2" />
-                Demo
+                <DecryptedText 
+                  text="Demo"
+                  speed={60}
+                  maxIterations={6}
+                  className="text-teal-400"
+                  encryptedClassName="text-gray-500"
+                />
               </a>
             </Button>
             <Button
@@ -81,7 +118,13 @@ const Projects = () => {
               onClick={() => handleProjectClick(project)}
               className="text-teal-400 hover:text-teal-300 hover:bg-gray-700 transition-all duration-200"
             >
-              Details
+              <DecryptedText 
+                text="Details"
+                speed={60}
+                maxIterations={6}
+                className="text-teal-400"
+                encryptedClassName="text-gray-500"
+              />
               <ChevronRight className="h-4 w-4 ml-1" />
             </Button>
           </div>
@@ -95,11 +138,42 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            My <span className="text-teal-400">Projects</span>
+            <DecryptedText 
+              text="My"
+              animateOn="view"
+              speed={80}
+              maxIterations={12}
+              sequential={true}
+              revealDirection="center"
+              className="text-white"
+              encryptedClassName="text-gray-500"
+            />
+            {' '}
+            <span className="text-teal-400">
+              <DecryptedText 
+                text="Projects"
+                animateOn="view"
+                speed={80}
+                maxIterations={12}
+                sequential={true}
+                revealDirection="center"
+                className="text-teal-400"
+                encryptedClassName="text-gray-600"
+              />
+            </span>
           </h1>
           <div className="w-24 h-1 bg-teal-400 mx-auto mb-6"></div>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Innovative projects showcasing my expertise in AI, robotics, and full-stack development. Each project represents a solution to real-world problems.
+            <DecryptedText 
+              text="Innovative projects showcasing my expertise in AI, robotics, and full-stack development. Each project represents a solution to real-world problems."
+              animateOn="view"
+              speed={20}
+              maxIterations={5}
+              sequential={true}
+              revealDirection="start"
+              className="text-gray-300"
+              encryptedClassName="text-gray-600"
+            />
           </p>
         </div>
 
@@ -116,28 +190,65 @@ const Projects = () => {
               <CardContent className="p-8 text-center">
                 <div className="flex items-center justify-center mb-4">
                   <Award className="h-8 w-8 text-yellow-400 mr-3" />
-                  <h3 className="text-2xl font-bold text-white">Featured Achievement</h3>
+                  <h3 className="text-2xl font-bold text-white">
+                    <DecryptedText 
+                      text="Featured Achievement"
+                      animateOn="view"
+                      speed={50}
+                      maxIterations={8}
+                      sequential={true}
+                      revealDirection="center"
+                      className="text-white"
+                      encryptedClassName="text-gray-500"
+                    />
+                  </h3>
                 </div>
                 <p className="text-gray-300 mb-6 max-w-3xl mx-auto">
-                  <strong className="text-teal-400">ApartiBot</strong> earned 6th place in a National Level Competition at 
+                  <strong className="text-teal-400">
+                    <DecryptedText 
+                      text="ApartiBot"
+                      speed={60}
+                      maxIterations={8}
+                      className="text-teal-400"
+                      encryptedClassName="text-gray-500"
+                    />
+                  </strong> earned 6th place in a National Level Competition at 
                   Sri Manakula Vinayagar Engineering College, showcasing advanced autonomous systems and AI integration.
                 </p>
                 <div className="grid md:grid-cols-3 gap-6 mt-8">
                   <div className="space-y-2">
                     <div className="text-3xl font-bold text-teal-400">
-                      {projects.length}
+                      <DecryptedText 
+                        text={projects.length.toString()}
+                        speed={80}
+                        maxIterations={10}
+                        className="text-teal-400"
+                        encryptedClassName="text-gray-500"
+                      />
                     </div>
                     <div className="text-gray-300">Major Projects</div>
                   </div>
                   <div className="space-y-2">
                     <div className="text-3xl font-bold text-teal-400">
-                      {new Set(projects.flatMap(p => p.techStack)).size}
+                      <DecryptedText 
+                        text={new Set(projects.flatMap(p => p.techStack)).size.toString()}
+                        speed={80}
+                        maxIterations={10}
+                        className="text-teal-400"
+                        encryptedClassName="text-gray-500"
+                      />
                     </div>
                     <div className="text-gray-300">Technologies Used</div>
                   </div>
                   <div className="space-y-2">
                     <div className="text-3xl font-bold text-teal-400">
-                      40%
+                      <DecryptedText 
+                        text="40%"
+                        speed={80}
+                        maxIterations={10}
+                        className="text-teal-400"
+                        encryptedClassName="text-gray-500"
+                      />
                     </div>
                     <div className="text-gray-300">Efficiency Improvement</div>
                   </div>
@@ -154,7 +265,15 @@ const Projects = () => {
           <ClickSpark sparkColor='#14b8a6' sparkSize={6} sparkRadius={12} sparkCount={4}>
             <Card className="bg-gray-800 border-gray-700 max-w-2xl w-full max-h-[80vh] overflow-y-auto">
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-white text-xl">{selectedProject.name}</CardTitle>
+                <CardTitle className="text-white text-xl">
+                  <DecryptedText 
+                    text={selectedProject.name}
+                    speed={50}
+                    maxIterations={8}
+                    className="text-white"
+                    encryptedClassName="text-gray-400"
+                  />
+                </CardTitle>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -167,7 +286,15 @@ const Projects = () => {
               <CardContent>
                 <div className="flex items-center mb-4">
                   <Calendar className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-gray-400 text-sm">{selectedProject.year}</span>
+                  <span className="text-gray-400 text-sm">
+                    <DecryptedText 
+                      text={selectedProject.year}
+                      speed={60}
+                      maxIterations={8}
+                      className="text-gray-400"
+                      encryptedClassName="text-gray-600"
+                    />
+                  </span>
                 </div>
                 
                 <p className="text-gray-300 mb-6 leading-relaxed">
@@ -183,7 +310,13 @@ const Projects = () => {
                         variant="secondary"
                         className="bg-gray-700 text-gray-300 hover:bg-teal-600 hover:text-white transition-colors duration-200"
                       >
-                        {tech}
+                        <DecryptedText 
+                          text={tech}
+                          speed={40}
+                          maxIterations={6}
+                          className="text-gray-300"
+                          encryptedClassName="text-gray-500"
+                        />
                       </Badge>
                     ))}
                   </div>
