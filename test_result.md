@@ -142,6 +142,30 @@ frontend:
         - agent: "main"
         - comment: "Added comprehensive framer-motion animations including page entry, form field focus animations, button interactions, social link hover effects, and pulsing availability indicators"
 
+  - task: "Add LetterGlitch background to all pages"
+    implemented: true
+    working: "testing_needed"
+    file: "Multiple pages"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: "testing_needed"
+        - agent: "main"
+        - comment: "Added LetterGlitch component to all pages (Home, About, Skills, Projects, Certifications, Contact) with consistent configuration: glitchSpeed=50, centerVignette=true, outerVignette=false, smooth=true. Also fixed Contact page alignment issues."
+
+  - task: "Fix Contact page alignment issues"
+    implemented: true
+    working: "testing_needed"
+    file: "/app/frontend/src/pages/Contact.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: "testing_needed"
+        - agent: "main"
+        - comment: "Fixed Contact page layout with proper grid structure (lg:grid-cols-2), improved column alignment, and restructured the JSX for better organization."
+
 metadata:
   created_by: "main_agent"
   version: "1.0"
