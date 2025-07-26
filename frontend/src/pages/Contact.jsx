@@ -8,6 +8,7 @@ import { Textarea } from '../components/ui/textarea';
 import { Label } from '../components/ui/label';
 import { useToast } from '../hooks/use-toast';
 import ClickSpark from '../components/ClickSpark';
+import LetterGlitch from '../components/LetterGlitch';
 import { mockData } from '../mock';
 
 const Contact = () => {
