@@ -132,12 +132,22 @@ const Contact = () => {
 
   return (
     <motion.div 
-      className="min-h-screen bg-gray-900 py-20"
+      className="min-h-screen bg-gray-900 py-20 relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Letter Glitch Background */}
+      <div className="absolute inset-0 opacity-10 z-0">
+        <LetterGlitch
+          glitchSpeed={50}
+          centerVignette={true}
+          outerVignette={false}
+          smooth={true}
+        />
+      </div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <motion.div 
           className="text-center mb-16"
@@ -165,17 +175,10 @@ const Contact = () => {
           </motion.p>
         </motion.div>
 
-        <motion.div 
-          className="grid lg:grid-cols-2 gap-12"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Contact Information */}
-          <motion.div 
-            className="space-y-6"
-            variants={itemVariants}
-          >
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Contact Information - Left Column */}
+          <div className="space-y-6">
+            <motion.div variants={itemVariants}>
             <ClickSpark sparkColor='#14b8a6' sparkSize={8} sparkRadius={15} sparkCount={6}>
               <motion.div
                 variants={cardVariants}
