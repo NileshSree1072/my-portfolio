@@ -170,104 +170,248 @@ const Certifications = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 py-20">
+    <motion.div 
+      className="min-h-screen bg-gray-900 py-20"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+        {/* Hero Section */}
+        <motion.div 
+          className="text-center mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1 
+            className="text-4xl sm:text-5xl font-bold text-white mb-6"
+            variants={itemVariants}
+          >
             Certifications & <span className="text-teal-400">Achievements</span>
-          </h1>
-          <div className="w-24 h-1 bg-teal-400 mx-auto mb-6"></div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          </motion.h1>
+          <motion.div 
+            className="w-24 h-1 bg-teal-400 mx-auto mb-6"
+            variants={itemVariants}
+            initial={{ width: 0 }}
+            animate={{ width: 96 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          />
+          <motion.p 
+            className="text-gray-300 text-lg max-w-2xl mx-auto"
+            variants={itemVariants}
+          >
             My continuous learning journey through various certifications and notable achievements.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Certifications Section */}
-        <div className="mb-16">
-          <div className="flex items-center mb-8">
-            <Award className="h-8 w-8 text-teal-400 mr-3" />
+        <motion.div 
+          className="mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div 
+            className="flex items-center mb-8"
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div
+              whileHover={{ rotate: 15, scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Award className="h-8 w-8 text-teal-400 mr-3" />
+            </motion.div>
             <h2 className="text-3xl font-bold text-white">Certifications</h2>
-          </div>
+          </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div 
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {certifications.map((cert, index) => (
-              <CertificationCard key={index} cert={cert} />
+              <CertificationCard key={index} cert={cert} index={index} />
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Achievements Section */}
-        <div className="mb-16">
-          <div className="flex items-center mb-8">
-            <Trophy className="h-8 w-8 text-yellow-400 mr-3" />
+        <motion.div 
+          className="mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <motion.div 
+            className="flex items-center mb-8"
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <motion.div
+              whileHover={{ rotate: 15, scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Trophy className="h-8 w-8 text-yellow-400 mr-3" />
+            </motion.div>
             <h2 className="text-3xl font-bold text-white">Achievements</h2>
-          </div>
+          </motion.div>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <motion.div 
+            className="grid md:grid-cols-2 gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {achievements.map((achievement, index) => (
-              <AchievementCard key={index} achievement={achievement} />
+              <AchievementCard key={index} achievement={achievement} index={index} />
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Stats Section */}
-        <Card className="bg-gray-800 border-gray-700 mb-16">
-          <CardContent className="p-8">
-            <div className="grid md:grid-cols-4 gap-6 text-center">
-              <div className="space-y-2">
-                <div className="text-3xl font-bold text-teal-400">
-                  {certifications.length}
-                </div>
-                <div className="text-gray-300">Certifications</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-3xl font-bold text-yellow-400">
-                  {achievements.length}
-                </div>
-                <div className="text-gray-300">Achievements</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-3xl font-bold text-green-400">
-                  500+
-                </div>
-                <div className="text-gray-300">Problems Solved</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-3xl font-bold text-blue-400">
-                  5+
-                </div>
-                <div className="text-gray-300">Open Source Contributions</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mb-16"
+        >
+          <Card className="bg-gray-800 border-gray-700">
+            <CardContent className="p-8">
+              <motion.div 
+                className="grid md:grid-cols-4 gap-6 text-center"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <motion.div 
+                  className="space-y-2"
+                  variants={statsVariants}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <AnimatedCounter endValue={certifications.length} />
+                  <div className="text-gray-300">Certifications</div>
+                </motion.div>
+                <motion.div 
+                  className="space-y-2"
+                  variants={statsVariants}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="text-3xl font-bold text-yellow-400">
+                    <AnimatedCounter endValue={achievements.length} />
+                  </div>
+                  <div className="text-gray-300">Achievements</div>
+                </motion.div>
+                <motion.div 
+                  className="space-y-2"
+                  variants={statsVariants}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="text-3xl font-bold text-green-400">
+                    <AnimatedCounter endValue="500" suffix="+" />
+                  </div>
+                  <div className="text-gray-300">Problems Solved</div>
+                </motion.div>
+                <motion.div 
+                  className="space-y-2"
+                  variants={statsVariants}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="text-3xl font-bold text-blue-400">
+                    <AnimatedCounter endValue="5" suffix="+" />
+                  </div>
+                  <div className="text-gray-300">Open Source Contributions</div>
+                </motion.div>
+              </motion.div>
+            </CardContent>
+          </Card>
+        </motion.div>
 
         {/* CTA Section */}
-        <Card className="bg-gradient-to-r from-gray-800 to-gray-700 border-gray-600">
-          <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Continuous Learning Journey
-            </h3>
-            <p className="text-gray-300 mb-6 max-w-3xl mx-auto">
-              I believe in lifelong learning and continuously updating my skills. 
-              I'm always working towards new certifications and participating in 
-              competitive programming and open source contributions.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Badge className="bg-teal-600 hover:bg-teal-700 text-white">
-                Next Goal: Google Cloud Certification
-              </Badge>
-              <Badge className="bg-teal-600 hover:bg-teal-700 text-white">
-                Target: 1000+ LeetCode Problems
-              </Badge>
-              <Badge className="bg-teal-600 hover:bg-teal-700 text-white">
-                Plan: More Open Source Contributions
-              </Badge>
-            </div>
-          </CardContent>
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <Card className="bg-gradient-to-r from-gray-800 to-gray-700 border-gray-600">
+            <CardContent className="p-8 text-center">
+              <motion.h3 
+                className="text-2xl font-bold text-white mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                Continuous Learning Journey
+              </motion.h3>
+              <motion.p 
+                className="text-gray-300 mb-6 max-w-3xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1 }}
+              >
+                I believe in lifelong learning and continuously updating my skills. 
+                I'm always working towards new certifications and participating in 
+                competitive programming and open source contributions.
+              </motion.p>
+              <motion.div 
+                className="flex flex-wrap justify-center gap-3"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <motion.div
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Badge className="bg-teal-600 hover:bg-teal-700 text-white">
+                    Next Goal: Google Cloud Certification
+                  </Badge>
+                </motion.div>
+                <motion.div
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Badge className="bg-teal-600 hover:bg-teal-700 text-white">
+                    Target: 1000+ LeetCode Problems
+                  </Badge>
+                </motion.div>
+                <motion.div
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Badge className="bg-teal-600 hover:bg-teal-700 text-white">
+                    Plan: More Open Source Contributions
+                  </Badge>
+                </motion.div>
+              </motion.div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
