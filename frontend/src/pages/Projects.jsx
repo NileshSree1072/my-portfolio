@@ -5,6 +5,7 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import ClickSpark from '../components/ClickSpark';
 import DecryptedText from '../components/DecryptedText';
+import LetterGlitch from '../components/LetterGlitch';
 import { mockData } from '../mock';
 
 const Projects = () => {
