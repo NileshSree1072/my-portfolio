@@ -135,8 +135,18 @@ const Projects = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-900 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-900 py-20 relative">
+      {/* Letter Glitch Background */}
+      <div className="absolute inset-0 opacity-10 z-0">
+        <LetterGlitch
+          glitchSpeed={50}
+          centerVignette={true}
+          outerVignette={false}
+          smooth={true}
+        />
+      </div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             <DecryptedText 
