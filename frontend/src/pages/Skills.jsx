@@ -197,6 +197,11 @@ const Skills = () => {
           </ClickSpark>
         </div>
 
+        {/* Coding Profiles Section */}
+        <div className="mt-16">
+          <CodingProfiles />
+        </div>
+
         {/* Specialization Areas */}
         <div className="mt-16">
           <ClickSpark sparkColor='#14b8a6' sparkSize={8} sparkRadius={15} sparkCount={6}>
