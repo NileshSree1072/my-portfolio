@@ -9,50 +9,165 @@ import { mockData } from '../mock';
 const Certifications = () => {
   const { certifications, achievements } = mockData;
 
-  const CertificationCard = ({ cert }) => (
-    <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-200 hover:transform hover:scale-105">
-      <CardHeader>
-        <CardTitle className="flex items-start justify-between text-white">
-          <div className="flex items-center">
-            <Award className="h-6 w-6 text-teal-400 mr-3 flex-shrink-0" />
-            <div>
-              <h3 className="text-lg font-semibold">{cert.name}</h3>
-              <p className="text-gray-400 text-sm font-normal">{cert.issuer}</p>
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 150,
+        damping: 20
+      }
+    },
+    hover: {
+      scale: 1.05,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 20
+      }
+    }
+  };
+
+  const statsVariants = {
+    hidden: { scale: 0 },
+    visible: {
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 15,
+        delay: 0.5
+      }
+    }
+  };
+
+  const CertificationCard = ({ cert, index }) => (
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      whileHover="hover"
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: index * 0.1 }}
+    >
+      <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-200 h-full">
+        <CardHeader>
+          <CardTitle className="flex items-start justify-between text-white">
+            <div className="flex items-center">
+              <motion.div
+                initial={{ rotate: 0 }}
+                whileHover={{ rotate: 15 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Award className="h-6 w-6 text-teal-400 mr-3 flex-shrink-0" />
+              </motion.div>
+              <div>
+                <h3 className="text-lg font-semibold">{cert.name}</h3>
+                <p className="text-gray-400 text-sm font-normal">{cert.issuer}</p>
+              </div>
             </div>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center text-gray-300">
+              <Calendar className="h-4 w-4 mr-2" />
+              <span className="text-sm">{cert.date}</span>
+            </div>
+            <Badge variant="secondary" className="bg-gray-700 text-gray-300 text-xs">
+              {cert.credentialId}
+            </Badge>
           </div>
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center text-gray-300">
-            <Calendar className="h-4 w-4 mr-2" />
-            <span className="text-sm">{cert.date}</span>
-          </div>
-          <Badge variant="secondary" className="bg-gray-700 text-gray-300 text-xs">
-            {cert.credentialId}
-          </Badge>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 
-  const AchievementCard = ({ achievement }) => (
-    <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-200">
-      <CardContent className="p-6">
-        <div className="flex items-start">
-          <Trophy className="h-6 w-6 text-yellow-400 mr-3 flex-shrink-0 mt-1" />
-          <div className="flex-1">
-            <h3 className="text-lg font-semibold text-white mb-2">{achievement.title}</h3>
-            <p className="text-gray-300 text-sm mb-3">{achievement.description}</p>
-            <div className="flex items-center text-gray-400">
-              <Calendar className="h-4 w-4 mr-2" />
-              <span className="text-xs">{achievement.date}</span>
+  const AchievementCard = ({ achievement, index }) => (
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      whileHover="hover"
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: index * 0.15 }}
+    >
+      <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-200 h-full">
+        <CardContent className="p-6">
+          <div className="flex items-start">
+            <motion.div
+              initial={{ rotate: 0 }}
+              whileHover={{ rotate: 15 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Trophy className="h-6 w-6 text-yellow-400 mr-3 flex-shrink-0 mt-1" />
+            </motion.div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-white mb-2">{achievement.title}</h3>
+              <p className="text-gray-300 text-sm mb-3">{achievement.description}</p>
+              <div className="flex items-center text-gray-400">
+                <Calendar className="h-4 w-4 mr-2" />
+                <span className="text-xs">{achievement.date}</span>
+              </div>
             </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
+
+  const AnimatedCounter = ({ endValue, suffix = "", duration = 2 }) => {
+    return (
+      <motion.div
+        className="text-3xl font-bold text-teal-400"
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 15,
+          delay: 0.5
+        }}
+      >
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          {endValue}{suffix}
+        </motion.span>
+      </motion.div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 py-20">
