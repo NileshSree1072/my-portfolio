@@ -201,24 +201,6 @@ const CodingProfiles = () => {
               </CardHeader>
               
               <CardContent className="space-y-6">
-                {/* Profile Image */}
-                <motion.div 
-                  className="relative rounded-lg overflow-hidden bg-gray-900 p-2"
-                  variants={imageVariants}
-                  whileHover="hover"
-                >
-                  <img 
-                    src={profile.image} 
-                    alt={`${profile.platform} Profile`}
-                    className="w-full h-auto rounded-md shadow-lg"
-                  />
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  />
-                </motion.div>
-
                 {/* Description */}
                 <motion.p 
                   className="text-gray-300 text-sm"
