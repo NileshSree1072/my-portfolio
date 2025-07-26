@@ -196,6 +196,11 @@ const About = () => {
           </Card>
         </ClickSpark>
 
+        {/* Coding Profiles Section */}
+        <div className="mt-16">
+          <CodingProfiles />
+        </div>
+
         {/* Personal Statement */}
         <div className="mt-16 text-center">
           <ClickSpark sparkColor='#14b8a6' sparkSize={10} sparkRadius={18} sparkCount={8}>
