@@ -179,193 +179,204 @@ const Contact = () => {
           {/* Contact Information - Left Column */}
           <div className="space-y-6">
             <motion.div variants={itemVariants}>
-            <ClickSpark sparkColor='#14b8a6' sparkSize={8} sparkRadius={15} sparkCount={6}>
-              <motion.div
-                variants={cardVariants}
-                whileHover="hover"
-              >
-                <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-300">
-                  <CardHeader>
-                    <CardTitle className="text-white">Contact Information</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <motion.div 
-                      className="flex items-center"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <motion.div
-                        whileHover={{ rotate: 15 }}
-                        transition={{ type: "spring", stiffness: 400 }}
+              <ClickSpark sparkColor='#14b8a6' sparkSize={8} sparkRadius={15} sparkCount={6}>
+                <motion.div
+                  variants={cardVariants}
+                  whileHover="hover"
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-300">
+                    <CardHeader>
+                      <CardTitle className="text-white">Contact Information</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <motion.div 
+                        className="flex items-center"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <Mail className="h-5 w-5 text-teal-400 mr-3" />
+                        <motion.div
+                          whileHover={{ rotate: 15 }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        >
+                          <Mail className="h-5 w-5 text-teal-400 mr-3" />
+                        </motion.div>
+                        <div>
+                          <p className="text-gray-300">{personal.email}</p>
+                        </div>
                       </motion.div>
-                      <div>
-                        <p className="text-gray-300">{personal.email}</p>
-                      </div>
-                    </motion.div>
-                    <motion.div 
-                      className="flex items-center"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <motion.div
-                        whileHover={{ rotate: 15 }}
-                        transition={{ type: "spring", stiffness: 400 }}
+                      <motion.div 
+                        className="flex items-center"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <Phone className="h-5 w-5 text-teal-400 mr-3" />
+                        <motion.div
+                          whileHover={{ rotate: 15 }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        >
+                          <Phone className="h-5 w-5 text-teal-400 mr-3" />
+                        </motion.div>
+                        <div>
+                          <p className="text-gray-300">{personal.phone}</p>
+                        </div>
                       </motion.div>
-                      <div>
-                        <p className="text-gray-300">{personal.phone}</p>
-                      </div>
-                    </motion.div>
-                    <motion.div 
-                      className="flex items-center"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <motion.div
-                        whileHover={{ rotate: 15 }}
-                        transition={{ type: "spring", stiffness: 400 }}
+                      <motion.div 
+                        className="flex items-center"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <MapPin className="h-5 w-5 text-teal-400 mr-3" />
+                        <motion.div
+                          whileHover={{ rotate: 15 }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        >
+                          <MapPin className="h-5 w-5 text-teal-400 mr-3" />
+                        </motion.div>
+                        <div>
+                          <p className="text-gray-300">{personal.location}</p>
+                        </div>
                       </motion.div>
-                      <div>
-                        <p className="text-gray-300">{personal.location}</p>
-                      </div>
-                    </motion.div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </ClickSpark>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </ClickSpark>
+            </motion.div>
 
             {/* Social Links */}
-            <ClickSpark sparkColor='#14b8a6' sparkSize={8} sparkRadius={15} sparkCount={6}>
-              <motion.div
-                variants={cardVariants}
-                whileHover="hover"
-              >
-                <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-300">
-                  <CardHeader>
-                    <CardTitle className="text-white">Connect With Me</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex space-x-4">
-                      <motion.a
-                        href={personal.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-lg hover:bg-teal-600 transition-colors duration-200"
-                        variants={socialButtonVariants}
-                        initial="initial"
-                        whileHover="hover"
-                        whileTap="tap"
-                      >
-                        <Github className="h-6 w-6 text-white" />
-                      </motion.a>
-                      <motion.a
-                        href={personal.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-lg hover:bg-teal-600 transition-colors duration-200"
-                        variants={socialButtonVariants}
-                        initial="initial"
-                        whileHover="hover"
-                        whileTap="tap"
-                      >
-                        <Linkedin className="h-6 w-6 text-white" />
-                      </motion.a>
-                      <motion.a
-                        href={`mailto:${personal.email}`}
-                        className="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-lg hover:bg-teal-600 transition-colors duration-200"
-                        variants={socialButtonVariants}
-                        initial="initial"
-                        whileHover="hover"
-                        whileTap="tap"
-                      >
-                        <Mail className="h-6 w-6 text-white" />
-                      </motion.a>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </ClickSpark>
+            <motion.div variants={itemVariants}>
+              <ClickSpark sparkColor='#14b8a6' sparkSize={8} sparkRadius={15} sparkCount={6}>
+                <motion.div
+                  variants={cardVariants}
+                  whileHover="hover"
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-300">
+                    <CardHeader>
+                      <CardTitle className="text-white">Connect With Me</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex space-x-4">
+                        <motion.a
+                          href={personal.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-lg hover:bg-teal-600 transition-colors duration-200"
+                          variants={socialButtonVariants}
+                          initial="initial"
+                          whileHover="hover"
+                          whileTap="tap"
+                        >
+                          <Github className="h-6 w-6 text-white" />
+                        </motion.a>
+                        <motion.a
+                          href={personal.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-lg hover:bg-teal-600 transition-colors duration-200"
+                          variants={socialButtonVariants}
+                          initial="initial"
+                          whileHover="hover"
+                          whileTap="tap"
+                        >
+                          <Linkedin className="h-6 w-6 text-white" />
+                        </motion.a>
+                        <motion.a
+                          href={`mailto:${personal.email}`}
+                          className="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-lg hover:bg-teal-600 transition-colors duration-200"
+                          variants={socialButtonVariants}
+                          initial="initial"
+                          whileHover="hover"
+                          whileTap="tap"
+                        >
+                          <Mail className="h-6 w-6 text-white" />
+                        </motion.a>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </ClickSpark>
+            </motion.div>
 
             {/* Quick Info */}
-            <ClickSpark sparkColor='#14b8a6' sparkSize={8} sparkRadius={15} sparkCount={6}>
-              <motion.div
-                variants={cardVariants}
-                whileHover="hover"
-              >
-                <Card className="bg-gradient-to-r from-gray-800 to-gray-700 border-gray-600 hover:border-teal-400 transition-all duration-300">
-                  <CardContent className="p-6">
-                    <motion.h3 
-                      className="text-white font-semibold mb-4"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      Let's Collaborate!
-                    </motion.h3>
-                    <motion.p 
-                      className="text-gray-300 text-sm mb-4"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.2 }}
-                    >
-                      I'm passionate about AI, robotics, and full-stack development. Currently pursuing B.Tech IT and always looking for innovative projects and learning opportunities.
-                    </motion.p>
-                    <motion.div 
-                      className="space-y-2"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                    >
+            <motion.div variants={itemVariants}>
+              <ClickSpark sparkColor='#14b8a6' sparkSize={8} sparkRadius={15} sparkCount={6}>
+                <motion.div
+                  variants={cardVariants}
+                  whileHover="hover"
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <Card className="bg-gradient-to-r from-gray-800 to-gray-700 border-gray-600 hover:border-teal-400 transition-all duration-300">
+                    <CardContent className="p-6">
+                      <motion.h3 
+                        className="text-white font-semibold mb-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        Let's Collaborate!
+                      </motion.h3>
+                      <motion.p 
+                        className="text-gray-300 text-sm mb-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                      >
+                        I'm passionate about AI, robotics, and full-stack development. Currently pursuing B.Tech IT and always looking for innovative projects and learning opportunities.
+                      </motion.p>
                       <motion.div 
-                        className="flex items-center text-green-400 text-sm"
-                        whileHover={{ x: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
+                        className="space-y-2"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
                       >
                         <motion.div 
-                          className="w-2 h-2 bg-green-400 rounded-full mr-2"
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        />
-                        Available for internships
-                      </motion.div>
-                      <motion.div 
-                        className="flex items-center text-green-400 text-sm"
-                        whileHover={{ x: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
+                          className="flex items-center text-green-400 text-sm"
+                          whileHover={{ x: 5 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <motion.div 
+                            className="w-2 h-2 bg-green-400 rounded-full mr-2"
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                          />
+                          Available for internships
+                        </motion.div>
                         <motion.div 
-                          className="w-2 h-2 bg-green-400 rounded-full mr-2"
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
-                        />
-                        Open to collaborations
-                      </motion.div>
-                      <motion.div 
-                        className="flex items-center text-green-400 text-sm"
-                        whileHover={{ x: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
+                          className="flex items-center text-green-400 text-sm"
+                          whileHover={{ x: 5 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <motion.div 
+                            className="w-2 h-2 bg-green-400 rounded-full mr-2"
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+                          />
+                          Open to collaborations
+                        </motion.div>
                         <motion.div 
-                          className="w-2 h-2 bg-green-400 rounded-full mr-2"
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
-                        />
-                        Interested in AI/ML projects
+                          className="flex items-center text-green-400 text-sm"
+                          whileHover={{ x: 5 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <motion.div 
+                            className="w-2 h-2 bg-green-400 rounded-full mr-2"
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
+                          />
+                          Interested in AI/ML projects
+                        </motion.div>
                       </motion.div>
-                    </motion.div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </ClickSpark>
-          </motion.div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </ClickSpark>
+            </motion.div>
+          </div>
 
           {/* Contact Form - Right Column */}
           <div>
@@ -374,6 +385,8 @@ const Contact = () => {
                 <motion.div
                   variants={cardVariants}
                   whileHover="hover"
+                  initial="hidden"
+                  animate="visible"
                 >
                   <Card className="bg-gray-800 border-gray-700 hover:border-teal-400 transition-all duration-300">
                     <CardHeader>
